@@ -1,0 +1,19 @@
+{
+    "name": "job-management-server",
+    "version": "1.0.0",
+    "type": "module",
+    "scripts": {
+        "dev": "nodemon src/index.js",
+        "start": "node src/index.js"
+    },
+    "dependencies": {
+        "cors": "^2.8.5",
+        "dotenv": "^16.4.1",
+        "express": "^4.18.2",
+        "job-management-server": "file:",
+        "mysql2": "^3.9.1"
+    },
+    "devDependencies": {
+        "nodemon": "^3.0.3"
+    }
+}

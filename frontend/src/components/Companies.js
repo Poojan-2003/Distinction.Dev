@@ -188,7 +188,7 @@ function Companies() {
 
   const fetchCompanies = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/companies');
+      const response = await fetch('http://backend:5000/api/companies');
       const data = await response.json();
       
       // Ensure that the data is an array before trying to map over it
@@ -208,8 +208,8 @@ function Companies() {
     e.preventDefault();
     try {
       const url = editingCompany
-        ? `http://localhost:5000/api/companies/${editingCompany.id}`
-        : 'http://localhost:5000/api/companies';
+        ? `http://backend:5000/api/companies/${editingCompany.id}`
+        : 'http://backend:5000/api/companies';
       
       const method = editingCompany ? 'PUT' : 'POST';
       
@@ -234,7 +234,7 @@ function Companies() {
   const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this company?')) {
       try {
-        await fetch(`http://localhost:5000/api/companies/${id}`, {
+        await fetch(`http://backend:5000/api/companies/${id}`, {
           method: 'DELETE',
         });
         alert('Company deleted successfully');

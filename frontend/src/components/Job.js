@@ -346,7 +346,7 @@ function Jobs() {
 
   const fetchJobs = async () => {
     try {
-      const response = await axios.get('http://backend:5000/api/jobs');
+      const response = await axios.get('http://localhost:5000/api/jobs');
       const data = response.data;
 
       // Ensure that data is an array before calling .map()
@@ -367,8 +367,8 @@ function Jobs() {
     e.preventDefault();
     try {
       const url = editingJob
-        ? `http://backend:5000/api/jobs/${editingJob.id}`
-        : 'http://backend:5000/api/jobs';
+        ? `http://localhost:5000/api/jobs/${editingJob.id}`
+        : 'http://localhost:5000/api/jobs';
       
       const method = editingJob ? 'PUT' : 'POST';
       
@@ -398,7 +398,7 @@ function Jobs() {
   const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this job?')) {
       try {
-        await axios.delete(`http://backend:5000/api/jobs/${id}`);
+        await axios.delete(`http://localhost:5000/api/jobs/${id}`);
         alert('Job deleted successfully');
         fetchJobs();
       } catch (error) {

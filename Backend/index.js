@@ -14,10 +14,10 @@ app.use(express.json());
 
 // Database connection
 const pool = mysql.createPool({
-  host: 'localhost',
-  user: 'root',
-  password: 'root',
-  database: 'test',
+  host: 'bbubr70jwc1ukmjaw5nx-mysql.services.clever-cloud.com',
+  user: 'uvfmnc0uuw5vghqo',
+  password: 'kU914M6R2oQZNtLJVWxR',
+  database: 'bbubr70jwc1ukmjaw5nx',
   waitForConnections: true,
   connectionLimit: 10,
   queueLimit: 0

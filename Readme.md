@@ -22,6 +22,8 @@ This project demonstrates a CRUD (Create, Read, Update, Delete) application buil
 
 ![Screenshot (24)](https://github.com/user-attachments/assets/4cdc1ca9-c3c7-43cb-83a3-cd7792d538b6)
 
+![Screenshot (25)](https://github.com/user-attachments/assets/7e203987-6517-4f93-b84c-cad0b5842746)
+
 ## Features
 
 ### General Features

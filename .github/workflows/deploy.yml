@@ -25,31 +25,9 @@ jobs:
         ssh -o StrictHostKeyChecking=no ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} << EOF
           set -e
 
-          # Define variables
-          REPO_NAME="Distinction.Dev"
-          REPO_URL="https://github.com/Poojan-2003/$REPO_NAME.git"  # Replace with your repo URL
-          CLONE_DIR="/home/ubuntu/$REPO_NAME"
-
-          echo "Checking if the repository exists..."
-          if [ ! -d "$CLONE_DIR" ]; then
-            echo "Cloning repository..."
-            
-            # Attempt to clone the repository
-            if ! git clone $REPO_URL $CLONE_DIR; then
-              echo "Failed to clone the repository. Please check the URL or permissions."
-              exit 1
-            fi
-          else
-            echo "Repository already exists. Pulling latest changes..."
-            cd $CLONE_DIR
-            if ! git pull; then
-              echo "Failed to pull the latest changes. Please check the repository state."
-              exit 1
-            fi
-          fi
-
+          git clone https://github.com/Poojan-2003/Distinction.Dev.git
           echo "Building Docker images..."
-          cd $CLONE_DIR
+          cd Distinction.Dev
           docker build -t frontend ./frontend || { echo "Failed to build frontend image"; exit 1; }
           docker build -t backend ./backend || { echo "Failed to build backend image"; exit 1; }
 

@@ -193,7 +193,7 @@ function Persons() {
 
   const fetchPersons = async () => {
     try {
-      const response = await fetch('http://backend:5000/api/persons');
+      const response = await fetch('http://13.53.129.87:5000/api/persons');
       const data = await response.json();
       
       // Ensure the data is an array
@@ -213,8 +213,8 @@ function Persons() {
     e.preventDefault();
     try {
       const url = editingPerson
-        ? `http://backend:5000/api/persons/${editingPerson.id}`
-        : 'http://backend:5000/api/persons';
+        ? `http://13.53.129.87:5000/api/persons/${editingPerson.id}`
+        : 'http://13.53.129.87:5000/api/persons';
       
       const method = editingPerson ? 'PUT' : 'POST';
       
@@ -244,7 +244,7 @@ function Persons() {
   const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this person?')) {
       try {
-        await fetch(`http://backend:5000/api/persons/${id}`, {
+        await fetch(`http://13.53.129.87:5000/api/persons/${id}`, {
           method: 'DELETE',
         });
         alert('Person deleted successfully');

@@ -30,7 +30,8 @@ jobs:
           echo "Building Docker images..."
 
           cd Distinction.Dev
-          echo "${{ secrets.ENV_FILE_CONTENTS }}" > /home/ubuntu/.env
+          echo "${{ secrets.ENV_FILE_CONTENTS }}" > /home/ubuntu/Distinction.Dev/.env
+          cat .env
           cd frontend
           
           docker build -t frontend . || { echo "Failed to build frontend image"; exit 1; }

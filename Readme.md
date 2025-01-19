@@ -8,7 +8,6 @@ This project demonstrates a CRUD (Create, Read, Update, Delete) application buil
 
 ### ScreenShot of Website
 
-![Screenshot (16)](https://github.com/user-attachments/assets/aa0b797c-340d-49c8-8373-3f5151c698a1)
 ![Screenshot (17)](https://github.com/user-attachments/assets/1d29eb1c-63d9-4314-83b9-61466198a737)
 ![Screenshot (18)](https://github.com/user-attachments/assets/13def9da-a7c3-4020-8b69-ebf17594bcab)
 ![Screenshot (19)](https://github.com/user-attachments/assets/1447a7bb-bdf6-4e0b-8808-c51e848dcfe8)

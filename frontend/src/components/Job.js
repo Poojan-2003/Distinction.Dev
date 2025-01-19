@@ -15,7 +15,7 @@ function Jobs() {
 
   const fetchJobs = async () => {
     try {
-      const response = await fetch('http://13.53.129.87:5000/api/jobs');
+      const response = await fetch('/api/jobs');
       const data = await response.json();
       
       // Ensure that data is an array before calling .map()
@@ -35,8 +35,8 @@ function Jobs() {
     e.preventDefault();
     try {
       const url = editingJob
-        ? `http://13.53.129.87:5000/api/jobs/${editingJob.id}`
-        : 'http://13.53.129.87:5000/api/jobs';
+        ? `/api/jobs/${editingJob.id}`
+        : '/api/jobs';
       
       const method = editingJob ? 'PUT' : 'POST';
       
@@ -64,7 +64,7 @@ function Jobs() {
   const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this job?')) {
       try {
-        await fetch(`http://13.53.129.87:5000/api/jobs/${id}`, {
+        await fetch(`/api/jobs/${id}`, {
           method: 'DELETE',
         });
         alert('Job deleted successfully');

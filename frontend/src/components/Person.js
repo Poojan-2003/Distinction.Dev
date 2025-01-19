@@ -17,7 +17,7 @@ function Persons() {
 
   const fetchPersons = async () => {
     try {
-      const response = await fetch('http://13.53.129.87:5000/api/persons');
+      const response = await fetch('/api/persons');
       const data = await response.json();
       
       if (Array.isArray(data)) {
@@ -36,8 +36,8 @@ function Persons() {
     e.preventDefault();
     try {
       const url = editingPerson
-        ? `http://13.53.129.87:5000/api/persons/${editingPerson.id}`
-        : 'http://13.53.129.87:5000/api/persons';
+        ? `/api/persons/${editingPerson.id}`
+        : '/api/persons';
       
       const method = editingPerson ? 'PUT' : 'POST';
       
@@ -67,7 +67,7 @@ function Persons() {
   const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this person?')) {
       try {
-        await fetch(`http://13.53.129.87:5000/api/persons/${id}`, {
+        await fetch(`/api/persons/${id}`, {
           method: 'DELETE',
         });
         alert('Person deleted successfully');

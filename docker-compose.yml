@@ -5,6 +5,8 @@ services:
     container_name: backend
     ports:
       - "5000:5000"
+    env_file:
+      - .env
   frontend:
     image: frontend
     container_name: frontend

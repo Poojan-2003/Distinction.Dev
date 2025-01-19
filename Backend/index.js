@@ -13,14 +13,23 @@ app.use(cors());
 app.use(express.json());
 
 // Database connection
+// const pool = mysql.createPool({
+//   host: 'bbubr70jwc1ukmjaw5nx-mysql.services.clever-cloud.com',
+//   user: 'uvfmnc0uuw5vghqo',
+//   password: 'kU914M6R2oQZNtLJVWxR',
+//   database: 'bbubr70jwc1ukmjaw5nx',
+//   waitForConnections: true,
+//   connectionLimit: 10,
+//   queueLimit: 0
+// });
 const pool = mysql.createPool({
-  host: 'bbubr70jwc1ukmjaw5nx-mysql.services.clever-cloud.com',
-  user: 'uvfmnc0uuw5vghqo',
-  password: 'kU914M6R2oQZNtLJVWxR',
-  database: 'bbubr70jwc1ukmjaw5nx',
-  waitForConnections: true,
-  connectionLimit: 10,
-  queueLimit: 0
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
+  waitForConnections: process.env.DB_WAIT_FOR_CONNECTIONS === 'true',
+  connectionLimit: parseInt(process.env.DB_CONNECTION_LIMIT, 10),
+  queueLimit: parseInt(process.env.DB_QUEUE_LIMIT, 10),
 });
 
 // Jobs Routes

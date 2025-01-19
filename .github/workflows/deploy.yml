@@ -1,0 +1,54 @@
+name: Deploy to EC2 on Push
+
+on:
+  push:
+    branches:
+      - main  # Trigger on push to the main branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Step 1: Checkout the repository
+    - name: Checkout Code
+      uses: actions/checkout@v2
+
+    # Step 2: Set up SSH for EC2
+    - name: Set up SSH
+      uses: webfactory/ssh-agent@v0.5.3
+      with:
+        ssh-private-key: ${{ secrets.EC2_SSH_KEY }}  # Add your private SSH key in GitHub secrets
+
+    # Step 3: Connect to EC2 and perform operations
+    - name: Deploy on EC2
+      run: |
+        ssh -o StrictHostKeyChecking=no ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} << EOF
+          set -e
+
+          # Define variables
+          REPO_NAME="distinction-dev"
+          REPO_URL="git@github.com:Poojan-2003/Distinction.Dev.git"  # Replace with your repo URL
+          CLONE_DIR="/home/ubuntu/$REPO_NAME"
+
+          echo "Checking if the repository exists..."
+          if [ ! -d "$CLONE_DIR" ]; then
+            echo "Cloning repository..."
+            git clone $REPO_URL $CLONE_DIR
+          else
+            echo "Repository already exists. Pulling latest changes..."
+            cd $CLONE_DIR
+            git pull
+          fi
+
+          echo "Building Docker images..."
+          cd $CLONE_DIR
+          docker build -t frontend ./frontend
+          docker build -t backend ./backend
+
+          echo "Starting Docker Compose..."
+          docker-compose up -d
+        EOF
+      env:
+        EC2_HOST: ${{ secrets.EC2_HOST }}
+        EC2_USER: ${{ secrets.EC2_USER }}

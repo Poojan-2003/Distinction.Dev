@@ -6,22 +6,11 @@ import mysql from 'mysql2/promise';
 dotenv.config();
 
 const app = express();
-const port = process.env.PORT || 5000;
+const port = 5000;
 
-// Middleware
 app.use(cors());
 app.use(express.json());
 
-// Database connection
-// const pool = mysql.createPool({
-//   host: 'bbubr70jwc1ukmjaw5nx-mysql.services.clever-cloud.com',
-//   user: 'uvfmnc0uuw5vghqo',
-//   password: 'kU914M6R2oQZNtLJVWxR',
-//   database: 'bbubr70jwc1ukmjaw5nx',
-//   waitForConnections: true,
-//   connectionLimit: 10,
-//   queueLimit: 0
-// });
 const pool = mysql.createPool({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
@@ -89,12 +78,12 @@ app.get('/api/persons', async (req, res) => {
 
 app.post('/api/persons', async (req, res) => {
   try {
-    const { name, company, age } = req.body;
+    const { name, company, salary, department } = req.body;
     const [result] = await pool.query(
-      'INSERT INTO persons (name, company, age) VALUES (?, ?, ?)',
-      [name, company, age]
+      'INSERT INTO persons (name, company, salary, department) VALUES (?, ?, ?, ?)',
+      [name, company, salary, department]
     );
-    res.status(201).json({ id: result.insertId, name, company, age });
+    res.status(201).json({ id: result.insertId, name, company, salary, department });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -102,12 +91,12 @@ app.post('/api/persons', async (req, res) => {
 
 app.put('/api/persons/:id', async (req, res) => {
   try {
-    const { name, company, age } = req.body;
+    const { name, company, salary, department } = req.body;
     await pool.query(
-      'UPDATE persons SET name = ?, company = ?, age = ? WHERE id = ?',
-      [name, company, age, req.params.id]
+      'UPDATE persons SET name = ?, company = ?, salary = ?, department = ? WHERE id = ?',
+      [name, company, salary, department, req.params.id]
     );
-    res.json({ id: req.params.id, name, company, age });
+    res.json({ id: req.params.id, name, company, salary, department });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

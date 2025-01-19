@@ -27,14 +27,13 @@ jobs:
           set -e
 
           # Define variables
-          REPO_NAME="distinction-dev"
-          REPO_URL="git@github.com:Poojan-2003/Distinction.Dev.git"  # Replace with your repo URL
+          REPO_URL="https://github.com/Poojan-2003/Distinction.Dev.git"  # Replace with your repo URL
           CLONE_DIR="/home/ubuntu/$REPO_NAME"
 
           echo "Checking if the repository exists..."
           if [ ! -d "$CLONE_DIR" ]; then
             echo "Cloning repository..."
-            git clone $REPO_URL $CLONE_DIR
+            git clone $REPO_URL 
           else
             echo "Repository already exists. Pulling latest changes..."
             cd $CLONE_DIR

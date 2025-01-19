@@ -166,6 +166,9 @@ crud-project/
 |-- frontend/
 |   |-- src/
 |       |-- components/
+                    |---- Jobs.js
+                    |---- Person.js
+                    |---- Company.js
 |       |-- App.js
 |       |-- index.js
 |-- README.md

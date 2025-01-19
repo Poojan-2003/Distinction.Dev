@@ -29,7 +29,7 @@ jobs:
           # Define variables
           REPO_URL="https://github.com/Poojan-2003/Distinction.Dev.git"  # Replace with your repo URL
           CLONE_DIR="/home/ubuntu/$REPO_NAME"
-
+          echo $REPO_URL
           echo "Checking if the repository exists..."
           if [ ! -d "$CLONE_DIR" ]; then
             echo "Cloning repository..."

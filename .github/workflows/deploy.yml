@@ -28,9 +28,11 @@ jobs:
           git clone https://github.com/Poojan-2003/Distinction.Dev.git
           echo "Building Docker images..."
           cd Distinction.Dev
-          docker build -t frontend ./frontend || { echo "Failed to build frontend image"; exit 1; }
-          docker build -t backend ./backend || { echo "Failed to build backend image"; exit 1; }
-
+          cd frontend
+          docker build -t frontend . || { echo "Failed to build frontend image"; exit 1; }
+          cd ../Backend
+          docker build -t backend . || { echo "Failed to build backend image"; exit 1; }
+          cd ..
           echo "Starting Docker Compose..."
           docker-compose up -d || { echo "Failed to start Docker Compose"; exit 1; }
         EOF

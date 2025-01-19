@@ -34,7 +34,7 @@ jobs:
           docker build -t backend . || { echo "Failed to build backend image"; exit 1; }
           cd ..
           echo "Starting Docker Compose..."
-          docker-compose up -d || { echo "Failed to start Docker Compose"; exit 1; }
+          docker compose up -d || { echo "Failed to start Docker Compose"; exit 1; }
         EOF
 
       env:

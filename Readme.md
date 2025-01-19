@@ -12,7 +12,7 @@ This project demonstrates a CRUD (Create, Read, Update, Delete) application buil
 - Full-stack implementation for managing three distinct schemas.
 - API endpoints to perform CRUD operations for each schema.
 - MySQL database for efficient data storage and retrieval.
-- Responsive and user-friendly UI built with React.
+- Responsive and user-friendly UI built with ReactJS.
 
 ### Schema-Specific Features
 
